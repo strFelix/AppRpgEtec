@@ -20,7 +20,7 @@
                 <FlexLayout Grid.Row="0" Direction="Row" AlignItems="Center" >
                     <Frame Padding="0" CornerRadius="40" 
                         HeightRequest="80" WidthRequest="80" >
-                        <Image Source="has_logo_transparente.svg"/>
+                        <Image/>
                     </Frame>
                     <VerticalStackLayout Padding="10,0,0,0" Spacing="0">
                         <Label Text="App RPG Etec" FontAttributes="Bold" FontSize="Medium" />
@@ -31,22 +31,35 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home" Icon="home.svg"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
 
-    <ShellContent
-        Title="Home" Icon="home.svg"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        <ShellContent
+            Title="Usuários" Icon="menuusuarios.svg"
+            ContentTemplate="{DataTemplate viewsUsuarios:ListagemView}"/>
 
-    <ShellContent
-        Title="Usuários" Icon="menuusuarios.svg"
-        ContentTemplate="{DataTemplate viewsUsuarios:ListagemView}"/>
+        <ShellContent
+            Title="Personagens" Icon="sauron.svg"
+            ContentTemplate="{DataTemplate viewsPersonagens:ListagemView}"/>
 
-    <ShellContent
-        Title="Personagens" Icon="menupersonagens.svg"
-        ContentTemplate="{DataTemplate viewsPersonagens:ListagemView}"/>
+        <ShellContent
+            Title="Disputas" Icon="menudisputas.svg"
+            ContentTemplate="{DataTemplate viewsDisputas:ListagemView}"/>
 
-    <ShellContent
-        Title="Disputas" Icon="menudisputas.svg"
-        ContentTemplate="{DataTemplate viewsDisputas:ListagemView}"/>
+        <Tab Title="Info" Route="Info" Icon="info.svg">
+            <ShellContent Title="Sobre" Route="sobre" ContentTemplate="{DataTemplate local:AboutView}"/>
+            <ShellContent Title="Descrição" Route="desc" ContentTemplate="{DataTemplate local:DescriptionView}"/>
+        </Tab>
+    </FlyoutItem>
+
+    <ShellContent Title="Sair" Icon="exit.svg" ContentTemplate="{DataTemplate viewsUsuarios:LoginView}" 
+              Shell.FlyoutBehavior="Disabled"/>
+
+    <Shell.FlyoutFooter>
+        <Label x:Name="lblLogin" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center"/>
+    </Shell.FlyoutFooter>
 
 </Shell>
